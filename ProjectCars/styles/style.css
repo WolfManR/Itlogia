@@ -11,6 +11,7 @@
 @font-face{
     font-family: Roboto;
     src: url("../fonts/Robotobold.ttf");
+    font-weight: bold;
 }
 
 body{
