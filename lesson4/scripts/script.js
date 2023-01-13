@@ -22,3 +22,15 @@ document.getElementById("price-action").onclick = function () {
         alert("Спасибо за заявку, мы свяжемся с вами в ближайшее время!")
     }
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    let layer = document.querySelector('.price-image');
+    document.addEventListener('mousemove', (event) => {
+        layer.style.transform = 'translate3d(' + ((event.clientX * 0.3) / 6) + 'px,' + ((event.clientY * 0.3) / 6) + 'px,0px)';
+    });
+
+    const elem = document.querySelector(".main");
+    document.addEventListener('scroll', () => {
+        elem.style.backgroundPositionX = '0' + (0.2 * window.scrollY) + 'px';
+    })
+});
