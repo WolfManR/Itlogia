@@ -20,13 +20,13 @@
         В нашем клубе имеется солидная коллекция спортивных автомобилей — от достаточно распространенных серийных машин до настоящего гоночного эксклюзива. Воспользуйтесь уникальной возможностью побывать за рулем настоящей легенды и узнать, на что она способна за пределами гоночной трассы!
       </div>
       <div class="main-action">
-        <button class="button" id="main-action">Посмотреть автомобиль</button>
+        <button class="button" id="main-action" (click)="goScroll(cars)">Посмотреть автомобиль</button>
       </div>
     </div>
   </div>
 </section>
 
-<section class="car" id="cars">
+<section class="car" id="cars" #cars>
   <div class="container">
     <h2 class="sub-title">Наш автопарк</h2>
     <div class="car-items">
@@ -49,7 +49,7 @@
           </div>
         </div>
         <div class="car-item-action">
-          <button class="button car-button">Забронировать</button>
+          <button class="button car-button" (click)="goScroll(price)">Забронировать</button>
         </div>
       </div>
 
@@ -71,7 +71,7 @@
           </div>
         </div>
         <div class="car-item-action">
-          <button class="button car-button">Забронировать</button>
+          <button class="button car-button" (click)="goScroll(price)">Забронировать</button>
         </div>
       </div>
 
@@ -93,7 +93,7 @@
           </div>
         </div>
         <div class="car-item-action">
-          <button class="button car-button">Забронировать</button>
+          <button class="button car-button" (click)="goScroll(price)">Забронировать</button>
         </div>
       </div>
 
@@ -115,7 +115,7 @@
           </div>
         </div>
         <div class="car-item-action">
-          <button class="button car-button">Забронировать</button>
+          <button class="button car-button" (click)="goScroll(price)">Забронировать</button>
         </div>
       </div>
 
@@ -137,7 +137,7 @@
           </div>
         </div>
         <div class="car-item-action">
-          <button class="button car-button">Забронировать</button>
+          <button class="button car-button" (click)="goScroll(price)">Забронировать</button>
         </div>
       </div>
 
@@ -159,7 +159,7 @@
           </div>
         </div>
         <div class="car-item-action">
-          <button class="button car-button">Забронировать</button>
+          <button class="button car-button" (click)="goScroll(price)">Забронировать</button>
         </div>
       </div>
 
@@ -167,15 +167,15 @@
   </div>
 </section>
 
-<section class="price" id="price">
+<section class="price" id="price" #price>
   <div class="container">
     <h2 class="sub-title">Узнать цену и забронировать</h2>
     <div class="price-text">Заполните данные, и мы перезвоним вам для уточнения всех деталей бронирования</div>
-    <form action="" class="price-form">
-      <input type="text" class="price-input" id="name" placeholder="Ваше имя">
-      <input type="text" class="price-input" id="phone" placeholder="Ваш телефон">
-      <input type="text" class="price-input" id="car" placeholder="Автомобиль, который вас интересует">
-      <button class="button" id="price-action">Узнать цену</button>
+    <form action="" class="price-form" [formGroup]="priceForm">
+      <input type="text" class="price-input" id="name" placeholder="Ваше имя" formControlName="name">
+      <input type="text" class="price-input" id="phone" placeholder="Ваш телефон" formControlName="phone">
+      <input type="text" class="price-input" id="car" placeholder="Автомобиль, который вас интересует" formControlName="car">
+      <button class="button" id="price-action" (click)="onSubmit()" [disabled]="!priceForm.valid">Узнать цену</button>
     </form>
     <img src="../assets/images/rolls.png" alt="Rolls" class="price-image">
   </div>
