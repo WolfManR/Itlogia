@@ -14,7 +14,7 @@ export class AppComponent {
     car: ['', Validators.required],
   })
 
-  carsData = [
+  testCarsData = [
     {
       image: "1.png",
       name:"Lamborghini Huracan Spyder",
@@ -57,11 +57,17 @@ export class AppComponent {
       engine: 2.0,
       places: 4
     },
-
   ]
+
+  carsData: any
 
   constructor(private fb: FormBuilder, private appService: AppService) {
   }
+
+  ngOnInit(){
+    this.appService.getData().subscribe(data => this.carsData = data)
+  }
+
     goScroll(target: HTMLElement){
       target.scrollIntoView({behavior: "smooth"})
     }
