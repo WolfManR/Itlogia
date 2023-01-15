@@ -13,59 +13,19 @@ export class AppComponent {
     phone: ['', Validators.required],
     car: ['', Validators.required],
   })
-
-  testCarsData = [
-    {
-      image: "1.png",
-      name:"Lamborghini Huracan Spyder",
-      gear: "полный",
-      engine: 5.2,
-      places: 2
-    },
-    {
-      image: "2.png",
-      name:"Chevrolet Corvette",
-      gear: "полный",
-      engine: 6.2,
-      places: 2
-    },
-    {
-      image: "3.png",
-      name:"Ferrari California",
-      gear: "полный",
-      engine: 3.9,
-      places: 4
-    },
-    {
-      image: "4.png",
-      name:"Lamborghini Urus",
-      gear: "полный",
-      engine: 4.0,
-      places: 5
-    },
-    {
-      image: "5.png",
-      name:"Audi R8",
-      gear: "полный",
-      engine: 5.2,
-      places: 2
-    },
-    {
-      image: "6.png",
-      name:"Аренда Chevrolet Camaro",
-      gear: "полный",
-      engine: 2.0,
-      places: 4
-    },
-  ]
-
   carsData: any
 
   constructor(private fb: FormBuilder, private appService: AppService) {
   }
 
   ngOnInit(){
-    this.appService.getData().subscribe(data => this.carsData = data)
+    this.appService.getData(this.category).subscribe(data => this.carsData = data)
+  }
+
+  category: string = 'sport';
+  toggleCategory(category: string) {
+    this.category = category;
+    this.ngOnInit();
   }
 
     goScroll(target: HTMLElement){
