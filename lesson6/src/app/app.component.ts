@@ -19,7 +19,13 @@ export class AppComponent {
   }
 
   ngOnInit(){
-    this.appService.getData().subscribe(data => this.carsData = data)
+    this.appService.getData(this.category).subscribe(data => this.carsData = data)
+  }
+
+  category: string = 'sport';
+  toggleCategory(category: string) {
+    this.category = category;
+    this.ngOnInit();
   }
 
     goScroll(target: HTMLElement){
